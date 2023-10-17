@@ -1,0 +1,9 @@
+server:
+  port: 88
+
+spring:
+  application:
+    name: blog-gateway
+  # 环境 dev|test|prod
+  profiles:
+    active: prod
