@@ -4,3 +4,6 @@ spring:
     url: jdbc:mysql://192.168.56.81:3306/aiblog_bms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
     password: 1234
+
+
+

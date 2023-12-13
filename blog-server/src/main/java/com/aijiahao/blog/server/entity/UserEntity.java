@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 用户表
@@ -16,6 +19,8 @@ import lombok.Data;
  */
 @Data
 @TableName("user")
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
