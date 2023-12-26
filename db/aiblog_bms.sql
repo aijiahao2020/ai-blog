@@ -2,7 +2,8 @@
 SQLyog Ultimate v10.00 Beta1
 MySQL - 8.0.27 : Database - aiblog_bms
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -22,7 +23,6 @@ DROP TABLE IF EXISTS `article`;
 
 CREATE TABLE `article` (
   `article_id` bigint NOT NULL AUTO_INCREMENT COMMENT '博文id',
-  `user_id` bigint DEFAULT NULL COMMENT '发表用户id',
   `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '博文标题',
   `description` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '博文摘要',
   `content` longtext COLLATE utf8mb4_general_ci COMMENT '博文内容',
@@ -30,6 +30,8 @@ CREATE TABLE `article` (
   `views` int DEFAULT NULL COMMENT '浏览量',
   `thumbs` int DEFAULT NULL COMMENT '点赞数',
   `comments` int DEFAULT NULL COMMENT '评论数',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`article_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='博文表';
 
@@ -84,8 +86,8 @@ CREATE TABLE `tag` (
 DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user` (
-  `user_id` bigint NOT NULL COMMENT '用户id',
-  `username` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '用户名',
+  `user_id` bigint NOT NULL AUTO_INCREMENT COMMENT '用户id',
+  `username` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL UNIQUE COMMENT '用户名',
   `nickname` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '用户别名',
   `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '密码',
   `mobile` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '手机号',
@@ -114,6 +116,15 @@ CREATE TABLE `user_article` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用户与文章对应表';
 
+
+CREATE TABLE `user_token` (
+    `user_id` BIGINT NOT NULL,
+    `token` VARCHAR(100) NOT NULL COMMENT 'token',
+    `expire_time` DATETIME DEFAULT NULL COMMENT '过期时间',
+    `update_time` DATETIME DEFAULT NULL COMMENT '更新时间',
+    PRIMARY KEY (`user_id`),
+    UNIQUE KEY `token` (`token`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用户Token';
 /*Data for the table `user_article` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

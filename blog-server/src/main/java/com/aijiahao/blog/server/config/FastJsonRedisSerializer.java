@@ -21,6 +21,10 @@ public class FastJsonRedisSerializer<T> implements RedisSerializer<T> {
     public FastJsonRedisSerializer(Class<T> clazz) {
         super();
         this.clazz = clazz;
+        // 打开autoType，存在风险
+        // ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
+        // 设置白名单
+        ParserConfig.getGlobalInstance().addAccept("com.aijiahao.blog.");
     }
     
     @Override
@@ -33,10 +37,7 @@ public class FastJsonRedisSerializer<T> implements RedisSerializer<T> {
 
     @Override
     public T deserialize(byte[] bytes) throws SerializationException {
-        // 打开autoType，存在风险
-        // ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
-        // 设置白名单
-        ParserConfig.getGlobalInstance().addAccept("com.aijiahao.blog.");
+
         if (null == bytes || bytes.length <= 0) {
             return null;
         }

@@ -14,16 +14,16 @@ import com.aijiahao.blog.server.service.TagService;
 
 
 @Service("tagService")
-public class TagServiceImpl extends ServiceImpl<TagDao, TagEntity> implements TagService {
+public class TagServiceImpl implements TagService {
 
-    @Override
-    public PageUtils queryPage(Map<String, Object> params) {
-        IPage<TagEntity> page = this.page(
-                new Query<TagEntity>().getPage(params),
-                new QueryWrapper<TagEntity>()
-        );
-
-        return new PageUtils(page);
-    }
+    // @Override
+    // public PageUtils queryPage(Map<String, Object> params) {
+    //     IPage<TagEntity> page = this.page(
+    //             new Query<TagEntity>().getPage(params),
+    //             new QueryWrapper<TagEntity>()
+    //     );
+    //
+    //     return new PageUtils(page);
+    // }
 
 }

@@ -25,10 +25,6 @@ public class ArticleEntity implements Serializable {
 	@TableId
 	private Long articleId;
 	/**
-	 * 发表用户id
-	 */
-	private Long userId;
-	/**
 	 * 博文标题
 	 */
 	private String title;
@@ -56,5 +52,14 @@ public class ArticleEntity implements Serializable {
 	 * 评论数
 	 */
 	private Integer comments;
+
+	/**
+	 * 创建时间
+	 */
+	private Date createTime;
+	/**
+	 * 更新时间
+	 */
+	private Date updateTime;
 
 }

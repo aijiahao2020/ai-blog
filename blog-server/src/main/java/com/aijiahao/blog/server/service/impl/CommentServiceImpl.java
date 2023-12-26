@@ -14,16 +14,16 @@ import com.aijiahao.blog.server.service.CommentService;
 
 
 @Service("commentService")
-public class CommentServiceImpl extends ServiceImpl<CommentDao, CommentEntity> implements CommentService {
+public class CommentServiceImpl implements CommentService {
 
-    @Override
-    public PageUtils queryPage(Map<String, Object> params) {
-        IPage<CommentEntity> page = this.page(
-                new Query<CommentEntity>().getPage(params),
-                new QueryWrapper<CommentEntity>()
-        );
-
-        return new PageUtils(page);
-    }
+    // @Override
+    // public PageUtils queryPage(Map<String, Object> params) {
+    //     IPage<CommentEntity> page = this.page(
+    //             new Query<CommentEntity>().getPage(params),
+    //             new QueryWrapper<CommentEntity>()
+    //     );
+    //
+    //     return new PageUtils(page);
+    // }
 
 }

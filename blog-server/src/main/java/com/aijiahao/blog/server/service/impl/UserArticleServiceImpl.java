@@ -14,16 +14,16 @@ import com.aijiahao.blog.server.service.UserArticleService;
 
 
 @Service("userArticleService")
-public class UserArticleServiceImpl extends ServiceImpl<UserArticleDao, UserArticleEntity> implements UserArticleService {
+public class UserArticleServiceImpl implements UserArticleService {
 
-    @Override
-    public PageUtils queryPage(Map<String, Object> params) {
-        IPage<UserArticleEntity> page = this.page(
-                new Query<UserArticleEntity>().getPage(params),
-                new QueryWrapper<UserArticleEntity>()
-        );
-
-        return new PageUtils(page);
-    }
+    // @Override
+    // public PageUtils queryPage(Map<String, Object> params) {
+    //     IPage<UserArticleEntity> page = this.page(
+    //             new Query<UserArticleEntity>().getPage(params),
+    //             new QueryWrapper<UserArticleEntity>()
+    //     );
+    //
+    //     return new PageUtils(page);
+    // }
 
 }

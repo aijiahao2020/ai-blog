@@ -6,7 +6,6 @@
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.aijiahao.blog.server.entity.ArticleEntity" id="articleMap">
         <result property="articleId" column="article_id"/>
-        <result property="userId" column="user_id"/>
         <result property="title" column="title"/>
         <result property="description" column="description"/>
         <result property="content" column="content"/>
@@ -14,7 +13,45 @@
         <result property="views" column="views"/>
         <result property="thumbs" column="thumbs"/>
         <result property="comments" column="comments"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
     </resultMap>
-
+    
+    <!--查询所有已发表的article信息， 不包括article 正文-->
+    <select id="selectAll" resultMap="articleMap">
+        SELECT 
+            article_id, title, description, published, views, thumbs, comments, create_time, update_time
+        FROM
+            article
+        WHERE
+            published = 1
+        ORDER BY
+            views
+        DESC
+    </select>
+    
+    <select id="selectNumberByPublished" resultType="java.lang.Integer">
+        SELECT COUNT(1)
+        FROM
+            article
+        WHERE
+            published = 1
+    </select>
+    
+    <select id="selectByArticleId" resultType="articleEntity">
+        SELECT 
+            title, description, content, published, views, thumbs, comments, create_time, update_time
+        FROM 
+            article
+        WHERE
+            article_id = #{articleId}
+    </select>
+    
+    <insert id="insertArticle">
+        INSERT INTO
+            article(article_id, title, description, content, published, views, thumbs, comments, create_time, update_time)
+        VALUES
+            (null, #{title}, #{description}, #{content}, #{published}, #{views}, #{thumbs}, #{comments}, #{createTime}, #{updateTime})
+    </insert>
 
 </mapper>

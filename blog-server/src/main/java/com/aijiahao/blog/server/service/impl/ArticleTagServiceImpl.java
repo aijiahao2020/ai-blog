@@ -14,16 +14,16 @@ import com.aijiahao.blog.server.service.ArticleTagService;
 
 
 @Service("articleTagService")
-public class ArticleTagServiceImpl extends ServiceImpl<ArticleTagDao, ArticleTagEntity> implements ArticleTagService {
+public class ArticleTagServiceImpl implements ArticleTagService {
 
-    @Override
-    public PageUtils queryPage(Map<String, Object> params) {
-        IPage<ArticleTagEntity> page = this.page(
-                new Query<ArticleTagEntity>().getPage(params),
-                new QueryWrapper<ArticleTagEntity>()
-        );
-
-        return new PageUtils(page);
-    }
+    // @Override
+    // public PageUtils queryPage(Map<String, Object> params) {
+    //     IPage<ArticleTagEntity> page = this.page(
+    //             new Query<ArticleTagEntity>().getPage(params),
+    //             new QueryWrapper<ArticleTagEntity>()
+    //     );
+    //
+    //     return new PageUtils(page);
+    // }
 
 }

@@ -17,6 +17,77 @@
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
     </resultMap>
+    <!--插入用户-->
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="userId">
+        INSERT INTO 
+            user(user_id, username, nickname, password, mobile, email, avatar, salt, status, create_time, update_time) 
+        VALUES
+            (null, #{username}, #{nickname}, #{password}, #{mobile}, #{email}, #{avatar}, #{salt}, #{status}, #{createTime}, #{updateTime})
+    </insert>
+    
+    <!--删除用户-->
+    <delete id="deleteByUserId">
+        DELETE FROM
+            user 
+        WHERE 
+            user_id = #{userId}
+    </delete>
+    
+    <update id="disableByUserId">
+        UPDATE 
+            user
+        SET
+            status = 0, update_time = #{updateTime}
+        WHERE
+            user_id = #{userId}
+    </update>
+
+    <update id="enableByUserId">
+        UPDATE
+            user
+        SET
+            status = 1, update_time = #{updateTime}
+        WHERE
+            user_id = #{userId}
+    </update>
+    
+    <!--更新用户-->
+    <update id="updateByUserId">
+        UPDATE
+            user
+        SET
+            nickname = #{nickname}, mobile = #{mobile}, email = #{email}, avatar = #{avatar}, status = #{status}, update_time = #{updateTime}
+        WHERE user_id = #{userId}
+    </update>
+    
+    
+    <!--查询所有用户-->
+    <select id="selectAll" resultMap="userMap">
+        SELECT
+            user_id, username, nickname, mobile, email, avatar, status, create_time, update_time
+        FROM
+            user 
+    </select>
+    
+    <!--根据用户名，查询用户 （登录、注册时验证）-->
+    <select id="selectByUserName" resultType="com.aijiahao.blog.server.entity.UserEntity">
+        SELECT
+            user_id, username, nickname, password, mobile, email, avatar, salt, status, create_time, update_time 
+        FROM 
+            user 
+        WHERE 
+            username = #{username}
+    </select>
+    
+    <!--根据用户id 查询用户-->
+    <select id="selectByUserId" resultType="com.aijiahao.blog.server.entity.UserEntity">
+        SELECT
+            user_id, username, nickname, password, mobile, email, avatar, salt, status, create_time, update_time
+        FROM
+            user
+        WHERE
+            user_id = #{userId}
+    </select>
 
 
 </mapper>

@@ -14,5 +14,21 @@
         <result property="parentCommentId" column="parent_comment_id"/>
     </resultMap>
 
+    <insert id="insertComment">
+        INSERT INTO
+            comment(comment_id, user_id, article_id, thumbs, content, create_time, parent_comment_id)
+        VALUES
+            (null, #{userId}, #{articleId}, #{thumbs}, #{content}, #{createTime}, #{parentCommentId})
+    </insert>
+    
+    <!--根据articleId 查询所有评论-->
+    <select id="selectAllByArticleId" resultMap="commentMap">
+        SELECT
+            comment_id, user_id, article_id, thumbs, content, create_time, parent_comment_id
+        FROM
+            comment
+        WHERE
+            article_id = #{articleId}
+    </select>
 
 </mapper>

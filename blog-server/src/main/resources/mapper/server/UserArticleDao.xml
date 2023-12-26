@@ -10,5 +10,12 @@
         <result property="articleId" column="article_id"/>
     </resultMap>
 
+    <!--插入一条记录-->
+    <insert id="insertOne">
+        INSERT INTO
+            user_article(id, user_id, article_id)
+        VALUES
+            (null, #{userId}, #{articleId})
+    </insert>
 
 </mapper>

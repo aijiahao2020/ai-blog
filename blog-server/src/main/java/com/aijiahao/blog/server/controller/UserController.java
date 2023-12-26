@@ -25,7 +25,7 @@ import com.aijiahao.blog.server.service.UserService;
  * @date 2023-09-13 14:37:23
  */
 @RestController
-@RequestMapping("server/user")
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -33,13 +33,13 @@ public class UserController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    // @RequestMapping("/list")
     //@RequiresPermissions("server:user:list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = userService.queryPage(params);
-
-        return R.ok().put("page", page);
-    }
+    // public R list(@RequestParam Map<String, Object> params){
+    //     PageUtils page = userService.queryPage(params);
+    //
+    //     return R.ok().put("page", page);
+    // }
 
 
     /**
@@ -48,7 +48,7 @@ public class UserController {
     @RequestMapping("/info/{userId}")
     //@RequiresPermissions("server:user:info")
     public R info(@PathVariable("userId") Long userId){
-		UserEntity user = userService.getById(userId);
+		UserEntity user = userService.queryByUserId(userId);
 
         return R.ok().put("user", user);
     }
@@ -59,8 +59,7 @@ public class UserController {
     @RequestMapping("/save")
     //@RequiresPermissions("server:user:save")
     public R save(@RequestBody UserEntity user){
-		userService.save(user);
-
+		userService.saveUser(user);
         return R.ok();
     }
 
@@ -70,8 +69,7 @@ public class UserController {
     @RequestMapping("/update")
     //@RequiresPermissions("server:user:update")
     public R update(@RequestBody UserEntity user){
-		userService.updateById(user);
-
+		userService.updateByUserId(user);
         return R.ok();
     }
 
@@ -80,8 +78,8 @@ public class UserController {
      */
     @RequestMapping("/delete")
     //@RequiresPermissions("server:user:delete")
-    public R delete(@RequestBody Long[] userIds){
-		userService.removeByIds(Arrays.asList(userIds));
+    public R delete(@RequestBody Long userId){
+		userService.deleteByUserId(userId);
 
         return R.ok();
     }

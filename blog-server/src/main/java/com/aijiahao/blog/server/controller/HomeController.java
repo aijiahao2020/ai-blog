@@ -2,6 +2,7 @@ package com.aijiahao.blog.server.controller;
 
 import com.aijiahao.blog.common.utils.R;
 import io.swagger.annotations.Api;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class HomeController {
     
     
+    
+    @GetMapping("/getRecommendBlogList")
     public R getRecommendList() {
+        return R.ok();
+    }
+    
+    @GetMapping("/getTypeList")
+    public R getTypeList() {
         return R.ok();
     }
 }

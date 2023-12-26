@@ -14,8 +14,9 @@ import java.util.Map;
  * @email aijiahao2020@outlook.com
  * @date 2023-09-13 14:37:23
  */
-public interface CommentService extends IService<CommentEntity> {
+public interface CommentService {
 
-    PageUtils queryPage(Map<String, Object> params);
+    // PageUtils queryPage(Map<String, Object> params);
+    
 }
 

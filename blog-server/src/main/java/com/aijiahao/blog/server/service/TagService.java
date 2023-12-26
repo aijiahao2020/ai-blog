@@ -14,8 +14,8 @@ import java.util.Map;
  * @email aijiahao2020@outlook.com
  * @date 2023-09-13 14:37:23
  */
-public interface TagService extends IService<TagEntity> {
+public interface TagService {
 
-    PageUtils queryPage(Map<String, Object> params);
+    // PageUtils queryPage(Map<String, Object> params);
 }
 

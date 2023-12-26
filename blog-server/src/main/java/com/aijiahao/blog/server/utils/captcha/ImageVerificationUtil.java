@@ -109,7 +109,7 @@ public class ImageVerificationUtil {
             byteArrayOutputStream.reset();
             //  图片加密成base64字符串
             String originImageString = Base64Utils.encodeToString(originImageBytes);
-            captchaVo.setOriginImage(originImageString);
+            // captchaVo.setOriginImage(originImageString);
 
             ImageIO.write(shadeImage, templateImageFileType, byteArrayOutputStream);
             //  图片转为二进制字符串

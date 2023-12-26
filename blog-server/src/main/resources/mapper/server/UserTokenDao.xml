@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aijiahao.blog.server.dao.UserTokenDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.aijiahao.blog.server.entity.UserTokenEntity" id="userMap">
+        <result property="userId" column="user_id"/>
+        <result property="token" column="token"/>
+        <result property="expireTime" column="expire_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <!--通过user_id查询token 信息-->
+    <select id="selectByUserId" resultType="com.aijiahao.blog.server.entity.UserTokenEntity">
+        SELECT 
+            user_id, token, expire_time, update_time
+        FROM 
+            user_token
+        WHERE
+            user_id = #{userId}
+    </select>
+    
+    <!--插入一条token-->
+    <insert id="insertToken">
+        INSERT INTO
+            user_token(user_id, token, expire_time, update_time)
+        VALUES
+            (#{userId}, #{token}, #{expireTime}, #{updateTime})
+    </insert>
+
+    <!--根据userId 更新token信息-->
+    <update id="updateByUserId">
+        UPDATE 
+            user_token
+        SET 
+            token = #{token}, expire_time = #{expireTime}, update_time = #{updateTime}
+        WHERE
+            user_id = #{userId}
+            
+    </update>
+    
+    <!--根据userId 删除token信息-->
+    <delete id="deleteByUserId">
+        DELETE FROM 
+            user_token
+        WHERE
+            user_id = #{userId}
+    </delete>
+</mapper>

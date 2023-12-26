@@ -34,57 +34,57 @@ public class ArticleTagController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
-    //@RequiresPermissions("server:articletag:list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = articleTagService.queryPage(params);
-
-        return R.ok().put("page", page);
-    }
+    // @RequestMapping("/list")
+    // //@RequiresPermissions("server:articletag:list")
+    // public R list(@RequestParam Map<String, Object> params){
+    //     PageUtils page = articleTagService.queryPage(params);
+    //
+    //     return R.ok().put("page", page);
+    // }
 
 
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
-    //@RequiresPermissions("server:articletag:info")
-    public R info(@PathVariable("id") Long id){
-		ArticleTagEntity articleTag = articleTagService.getById(id);
-
-        return R.ok().put("articleTag", articleTag);
-    }
+    // @RequestMapping("/info/{id}")
+    // //@RequiresPermissions("server:articletag:info")
+    // public R info(@PathVariable("id") Long id){
+	// 	ArticleTagEntity articleTag = articleTagService.getById(id);
+    //
+    //     return R.ok().put("articleTag", articleTag);
+    // }
 
     /**
      * 保存
      */
-    @RequestMapping("/save")
-    //@RequiresPermissions("server:articletag:save")
-    public R save(@RequestBody ArticleTagEntity articleTag){
-		articleTagService.save(articleTag);
-
-        return R.ok();
-    }
+    // @RequestMapping("/save")
+    // //@RequiresPermissions("server:articletag:save")
+    // public R save(@RequestBody ArticleTagEntity articleTag){
+	// 	articleTagService.save(articleTag);
+    //
+    //     return R.ok();
+    // }
 
     /**
      * 修改
      */
-    @RequestMapping("/update")
-    //@RequiresPermissions("server:articletag:update")
-    public R update(@RequestBody ArticleTagEntity articleTag){
-		articleTagService.updateById(articleTag);
-
-        return R.ok();
-    }
+    // @RequestMapping("/update")
+    // //@RequiresPermissions("server:articletag:update")
+    // public R update(@RequestBody ArticleTagEntity articleTag){
+	// 	articleTagService.updateById(articleTag);
+    //
+    //     return R.ok();
+    // }
 
     /**
      * 删除
      */
-    @RequestMapping("/delete")
-    //@RequiresPermissions("server:articletag:delete")
-    public R delete(@RequestBody Long[] ids){
-		articleTagService.removeByIds(Arrays.asList(ids));
-
-        return R.ok();
-    }
+    // @RequestMapping("/delete")
+    // //@RequiresPermissions("server:articletag:delete")
+    // public R delete(@RequestBody Long[] ids){
+	// 	articleTagService.removeByIds(Arrays.asList(ids));
+    //
+    //     return R.ok();
+    // }
 
 }

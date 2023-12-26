@@ -25,7 +25,7 @@ import com.aijiahao.blog.server.service.CommentService;
  * @date 2023-09-13 14:37:23
  */
 @RestController
-@RequestMapping("server/comment")
+@RequestMapping("/comment")
 public class CommentController {
     @Autowired
     private CommentService commentService;
@@ -33,57 +33,57 @@ public class CommentController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
-    //@RequiresPermissions("server:comment:list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = commentService.queryPage(params);
-
-        return R.ok().put("page", page);
-    }
+    // @RequestMapping("/list")
+    // //@RequiresPermissions("server:comment:list")
+    // public R list(@RequestParam Map<String, Object> params){
+    //     PageUtils page = commentService.queryPage(params);
+    //
+    //     return R.ok().put("page", page);
+    // }
 
 
     /**
      * 信息
      */
-    @RequestMapping("/info/{commentId}")
-    //@RequiresPermissions("server:comment:info")
-    public R info(@PathVariable("commentId") Long commentId){
-		CommentEntity comment = commentService.getById(commentId);
-
-        return R.ok().put("comment", comment);
-    }
+    // @RequestMapping("/info/{commentId}")
+    // //@RequiresPermissions("server:comment:info")
+    // public R info(@PathVariable("commentId") Long commentId){
+	// 	CommentEntity comment = commentService.getById(commentId);
+    //
+    //     return R.ok().put("comment", comment);
+    // }
 
     /**
      * 保存
      */
-    @RequestMapping("/save")
-    //@RequiresPermissions("server:comment:save")
-    public R save(@RequestBody CommentEntity comment){
-		commentService.save(comment);
-
-        return R.ok();
-    }
+    // @RequestMapping("/save")
+    // //@RequiresPermissions("server:comment:save")
+    // public R save(@RequestBody CommentEntity comment){
+	// 	commentService.save(comment);
+    //
+    //     return R.ok();
+    // }
 
     /**
      * 修改
      */
-    @RequestMapping("/update")
-    //@RequiresPermissions("server:comment:update")
-    public R update(@RequestBody CommentEntity comment){
-		commentService.updateById(comment);
-
-        return R.ok();
-    }
+    // @RequestMapping("/update")
+    // //@RequiresPermissions("server:comment:update")
+    // public R update(@RequestBody CommentEntity comment){
+	// 	commentService.updateById(comment);
+    //
+    //     return R.ok();
+    // }
 
     /**
      * 删除
      */
-    @RequestMapping("/delete")
-    //@RequiresPermissions("server:comment:delete")
-    public R delete(@RequestBody Long[] commentIds){
-		commentService.removeByIds(Arrays.asList(commentIds));
-
-        return R.ok();
-    }
+    // @RequestMapping("/delete")
+    // //@RequiresPermissions("server:comment:delete")
+    // public R delete(@RequestBody Long[] commentIds){
+	// 	commentService.removeByIds(Arrays.asList(commentIds));
+    //
+    //     return R.ok();
+    // }
 
 }

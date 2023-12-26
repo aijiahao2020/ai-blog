@@ -12,6 +12,8 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2023-09-13 14:37:23
  */
 @Mapper
-public interface UserArticleDao extends BaseMapper<UserArticleEntity> {
+public interface UserArticleDao {
+    
+    void insertOne(UserArticleEntity userArticleEntity);
 	
 }
